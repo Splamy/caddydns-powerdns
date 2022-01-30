@@ -50,11 +50,12 @@ func (p *Provider) Validate() error {
 
 // UnmarshalCaddyfile sets up the DNS provider from Caddyfile tokens. Syntax:
 //
-// providername [<api_token>] {
+// providername [<name>] {
 //     api_token <api_token>
+//     server_url <server_url>
+//     server_id <server_id>
 // }
 //
-// **THIS IS JUST AN EXAMPLE AND NEEDS TO BE CUSTOMIZED.**
 func (p *Provider) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 	for d.Next() {
 		if d.NextArg() {
@@ -63,25 +64,30 @@ func (p *Provider) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 		for nesting := d.Nesting(); d.NextBlock(nesting); {
 			switch d.Val() {
 			case "api_token":
-				if p.Provider.APIToken != "" {
-					return d.Err("API token already set")
+				if d.NextArg() {
+					p.Provider.APIToken = d.Val()
 				}
-				p.Provider.APIToken = d.Val()
 				if d.NextArg() {
 					return d.ArgErr()
 				}
 			case "server_url":
-				p.Provider.ServerURL = d.Val()
+				if d.NextArg() {
+					p.Provider.ServerURL = d.Val()
+				}
 				if d.NextArg() {
 					return d.ArgErr()
 				}
 			case "server_id":
-				p.Provider.ServerID = d.Val()
+				if d.NextArg() {
+					p.Provider.ServerID = d.Val()
+				}
 				if d.NextArg() {
 					return d.ArgErr()
 				}
 			case "debug":
-				p.Provider.Debug = d.Val()
+				if d.NextArg() {
+					p.Provider.Debug = d.Val()
+				}
 				if d.NextArg() {
 					return d.ArgErr()
 				}
