@@ -33,8 +33,8 @@ To use this module for the ACME DNS challenge, [configure the ACME issuer in you
 			"provider": {
 				"name": "powerdns",
 				"api_token": "POWERDNS_API_TOKEN",
-                "server_url": "https://your.powerdns.com",
-                "server_id": "localhost"
+				"server_url": "https://your.powerdns.com",
+				"server_id": "localhost"
 			}
 		}
 	}
@@ -47,9 +47,9 @@ or with the Caddyfile:
 # globally
 {
 	acme_dns powerdns {
-				api_token POWERDNS_API_TOKEN
-                server_url https://your.powerdns.com
-                server_id localhost
+		api_token POWERDNS_API_TOKEN
+		server_url https://your.powerdns.com
+		server_id localhost
 	}
 }
 ```
@@ -58,9 +58,9 @@ or with the Caddyfile:
 # one site
 tls {
 	dns powerdns {
-				api_token POWERDNS_API_TOKEN
-                server_url https://your.powerdns.com
-                server_id localhost
+		api_token POWERDNS_API_TOKEN
+		server_url https://your.powerdns.com
+		server_id localhost
 	}
 }
 ```
