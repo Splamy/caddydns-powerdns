@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/url"
 
+	"github.com/Splamy/powerdns"
 	"github.com/caddyserver/caddy/v2"
 	"github.com/caddyserver/caddy/v2/caddyconfig/caddyfile"
-	"github.com/libdns/powerdns"
 )
 
 // Provider lets Caddy read and manipulate DNS records hosted by this DNS provider.
